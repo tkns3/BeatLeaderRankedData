@@ -13,9 +13,7 @@ jobs:
         with:
           output_json_path: "./rankedmaps.json"
       - run: |
-          pwd
-          ls
-          zip rankedData.zip rankedData.json
+          zip rankedmaps.zip rankedmaps.json
           echo "TAG_NAME=`date '+%Y%m%d%H%M%S'`" >> $GITHUB_ENV
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:

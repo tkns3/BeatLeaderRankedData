@@ -1,8 +1,6 @@
 # Set the base image as the .NET 6.0 SDK (this includes the runtime)
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as build-env
 
-RUN pwd
-
 # Copy everything and publish the release (publish implicitly restores and builds)
 WORKDIR /app
 COPY . ./
@@ -21,8 +19,6 @@ LABEL com.github.actions.description="Get ranked map from Beat Leader and create
 # https://docs.github.com/actions/creating-actions/metadata-syntax-for-github-actions#branding
 LABEL com.github.actions.icon="activity"
 LABEL com.github.actions.color="orange"
-
-RUN pwd
 
 # Relayer the .NET SDK, anew with the build output
 FROM mcr.microsoft.com/dotnet/sdk:6.0

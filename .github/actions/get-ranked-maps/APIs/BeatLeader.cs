@@ -66,7 +66,7 @@ namespace get_ranked_maps.APIs
             public int nominatedTime { get; set; }
             public int qualifiedTime { get; set; }
             public int rankedTime { get; set; }
-            public float? stars { get; set; }
+            public double? stars { get; set; }
             public int type { get; set; }
             public float njs { get; set; }
             public float nps { get; set; }

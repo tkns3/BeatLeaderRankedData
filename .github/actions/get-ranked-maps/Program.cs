@@ -31,7 +31,7 @@ for (int page = 1; ; page++)
         mapInfos.Add(new MapInfo()
         {
             BeatLeaderId = l.id ?? "",
-            BeatSaverId = beatSaverId.Trim('x')[0..^2],
+            BeatSaverId = beatSaverId.Replace("x","")[0..^2],
             Hash = l.song.hash ?? "",
             SongName = l.song.name ?? "",
             SongSubName = l.song.subName ?? "",

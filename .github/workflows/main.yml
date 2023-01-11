@@ -20,6 +20,8 @@ jobs:
           assets+=("-a" "rankedmaps.zip")
           tag_name=`date '+%Y%m%d%H%M'`
           hub release create "${assets[@]}" -m "Latest" "$tag_name"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Cleanup
         uses: dev-drprasad/delete-older-releases@v0.2.0
         with:

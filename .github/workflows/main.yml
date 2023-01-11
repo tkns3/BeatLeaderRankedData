@@ -1,0 +1,25 @@
+name: Create ranekd map data
+on:
+  schedule:
+    - cron: "0 20 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/get-ranked-maps
+        with:
+          output_json_path: "rankedmaps.json"
+      - run: |
+          zip rankedData.zip rankedData.json
+          echo "TAG_NAME=`date '+%Y%m%d%H%M%S'`" >> $GITHUB_ENV
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Release ${{ env.TAG_NAME }}"
+          files: |
+            rankedmaps.zip

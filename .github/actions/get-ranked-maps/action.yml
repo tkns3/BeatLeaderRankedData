@@ -1,0 +1,11 @@
+name: get-ranked-maps
+description: 'Get ranked map from Beat Leader and create JSON file.'
+inputs:
+  output_json_path:
+    description: 'output json path.'
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.output_json_path }}

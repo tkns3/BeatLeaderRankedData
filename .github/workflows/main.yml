@@ -12,14 +12,18 @@ jobs:
       - uses: ./.github/actions/get-ranked-maps
         with:
           output_json_path: "./rankedmaps.json"
-      - run: |
+      - name: Release
+        run: |
+          set -x
           zip rankedmaps.zip rankedmaps.json
-          echo "TAG_NAME=`date '+%Y%m%d%H%M%S'`" >> $GITHUB_ENV
-      - uses: "marvinpinto/action-automatic-releases@latest"
+          assets=()
+          assets+=("-a" "rankedmaps.zip")
+          tag_name=`date '+%Y%m%d%H%M'`
+          hub release create "${assets[@]}" -m "Latest" "$tag_name"
+      - name: Cleanup
+        uses: dev-drprasad/delete-older-releases@v0.2.0
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          title: "Release ${{ env.TAG_NAME }}"
-          files: |
-            rankedmaps.zip
+          keep_latest: 1
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

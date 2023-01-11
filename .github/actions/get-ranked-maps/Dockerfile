@@ -20,6 +20,8 @@ LABEL com.github.actions.description="Get ranked map from Beat Leader and create
 LABEL com.github.actions.icon="activity"
 LABEL com.github.actions.color="orange"
 
+RUN pwd
+
 # Relayer the .NET SDK, anew with the build output
 FROM mcr.microsoft.com/dotnet/sdk:6.0
 COPY --from=build-env /app/out .

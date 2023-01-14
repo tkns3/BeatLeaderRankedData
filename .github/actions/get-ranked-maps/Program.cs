@@ -49,6 +49,8 @@ for (int page = 1; ; page++)
             Notes = l.difficulty.notes,
             Walls = l.difficulty.walls,
             Njs = l.difficulty.njs,
+            Nps = l.difficulty.nps,
+            MaxScore = l.difficulty.maxScore,
         });
     }
     if (res.metadata.page * res.metadata.itemsPerPage >= res.metadata.total)
@@ -81,4 +83,6 @@ class MapInfo
     public int Notes { get; set; }
     public int Walls { get; set; }
     public double Njs { get; set; }
+    public double Nps { get; set; }
+    public int MaxScore { get; set; }
 }

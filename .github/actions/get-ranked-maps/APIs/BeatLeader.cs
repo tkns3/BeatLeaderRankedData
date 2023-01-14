@@ -27,7 +27,7 @@ namespace get_ranked_maps.APIs
         /// <param name="date_from"></param>
         /// <param name="date_to"></param>
         /// <returns></returns>
-        public static async Task<LeaderboardInfoResponseWithMetadata> GetLeaderboards(int page = 1, int count = 10, string? sortBy = null, string? order = null, string? search = null, string? type = null, int? mapType = null, int? allTypes = null, string? mytype = null, float? stars_from = null, float? stars_to = null, int? date_from = null, int? date_to = null)
+        public static async Task<LeaderboardInfoResponseWithMetadata> GetLeaderboards(int page = 1, int count = 10, string? sortBy = null, string? order = null, string? search = null, string? type = null, int? mapType = null, int? allTypes = null, string? mytype = null, double? stars_from = null, double? stars_to = null, int? date_from = null, int? date_to = null)
         {
             var opt_page       = $"page={page}";
             var opt_count      = $"&count={count}";
@@ -68,8 +68,8 @@ namespace get_ranked_maps.APIs
             public int rankedTime { get; set; }
             public double? stars { get; set; }
             public int type { get; set; }
-            public float njs { get; set; }
-            public float nps { get; set; }
+            public double njs { get; set; }
+            public double nps { get; set; }
             public int notes { get; set; }
             public int bombs { get; set; }
             public int walls { get; set; }
@@ -80,18 +80,18 @@ namespace get_ranked_maps.APIs
         public class ModifiersMap
         {
             public int modifierId { get; set; }
-            public float da { get; set; }
-            public float fs { get; set; }
-            public float ss { get; set; }
-            public float sf { get; set; }
-            public float gn { get; set; }
-            public float na { get; set; }
-            public float nb { get; set; }
-            public float nf { get; set; }
-            public float no { get; set; }
-            public float pm { get; set; }
-            public float sc { get; set; }
-            public float sa { get; set; }
+            public double da { get; set; }
+            public double fs { get; set; }
+            public double ss { get; set; }
+            public double sf { get; set; }
+            public double gn { get; set; }
+            public double na { get; set; }
+            public double nb { get; set; }
+            public double nf { get; set; }
+            public double no { get; set; }
+            public double pm { get; set; }
+            public double sc { get; set; }
+            public double sa { get; set; }
         }
 
         public class Metadata
@@ -110,7 +110,7 @@ namespace get_ranked_maps.APIs
             public int positiveVotes { get; set; }
             public int starVotes { get; set; }
             public int negativeVotes { get; set; }
-            public float voteStars { get; set; }
+            public double voteStars { get; set; }
             public ScoreResponseWithAcc? myScore { get; set; }
             public RankQualification? qualification { get; set; }
             public RankUpdate? reweight { get; set; }

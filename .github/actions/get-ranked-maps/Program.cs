@@ -14,6 +14,10 @@ List<MapInfo> mapInfos = new List<MapInfo>();
 for (int page = 1; ; page++)
 {
     var res = await BeatLeader.GetLeaderboards(page: page, count: 100, sortBy: "timestamp", order: "desc", type: "ranked", stars_from: 0, stars_to: 18);
+    if (res.data.Length == 0)
+    {
+        break;
+    }
     foreach (var l in res.data)
     {
         if (
@@ -52,10 +56,6 @@ for (int page = 1; ; page++)
             Nps = l.difficulty.nps,
             MaxScore = l.difficulty.maxScore,
         });
-    }
-    if (res.metadata.page * res.metadata.itemsPerPage >= res.metadata.total)
-    {
-        break;
     }
 }
 

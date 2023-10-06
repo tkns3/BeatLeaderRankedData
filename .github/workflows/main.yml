@@ -17,7 +17,7 @@ jobs:
           set -x
           zip rankedmaps.zip rankedmaps.json
           assets=()
-          assets+=(""rankedmaps.zip")
+          assets+=("rankedmaps.zip")
           tag_name=`date '+%Y%m%d%H%M'`
           gh release create "$tag_name" "${assets[@]}" -t "Latest"
         env:

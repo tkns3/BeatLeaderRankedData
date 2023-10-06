@@ -17,9 +17,9 @@ jobs:
           set -x
           zip rankedmaps.zip rankedmaps.json
           assets=()
-          assets+=("-a" "rankedmaps.zip")
+          assets+=(""rankedmaps.zip")
           tag_name=`date '+%Y%m%d%H%M'`
-          hub release create "${assets[@]}" -m "Latest" "$tag_name"
+          gh release create "$tag_name" "${assets[@]}" -t "Latest"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Cleanup
